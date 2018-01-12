@@ -1,0 +1,35 @@
+﻿{
+    "proxy": "",
+    "fullMapExtent": {
+        "xmin": 5425825.040123436,
+        "ymin": 1993121.882125508,
+        "xmax": 18497168.373111382,
+        "ymax": 7100338.364026487,
+        "spatialReference": {
+            "wkid": 102100
+        }
+    },
+    "exportProxy": "../proxy.jsp?",
+    "geoServer": "http://117.78.43.173:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+    "administrativeArea_SS": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminProvince2/MapServer",
+    "administrativeArea_S": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminDistrict2/MapServer",
+    "administrativeArea_X": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminCounty2/MapServer",
+    "administrativeArea_T": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminTown2/MapServer",
+    "administrativeArea_V": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminVillage2/MapServer",
+    "districtNone": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/DistrictNone/MapServer",
+    "crackDistrict": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/Block/MapServer",
+    "fxmx_cbfxfb": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/RiskRate/MapServer",
+    "layerUrl_worldbase": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/worldbase/MapServer",
+    "layerUrl_worldImg": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+    "layerUrl_screenWorldBase": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/worldBaseScreen2/MapServer",
+    "layerUrl_riskAGBusiness": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/RiskAGBusiness/MapServer",
+    "layerUrl_riskAirBusiness": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/RiskAirBusiness/MapServer",
+    "layerUrl_riskRate": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/RiskRate/MapServer",
+    "layerUrl_airAllRisk": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AirAllRisk/MapServer",
+    "layerUrl_airDryRisk": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AirDryRisk/MapServer",
+    "layerUrl_insuranceCompany": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/InsuranceCompany/MapServer",
+    "layerUrl_adminBoundary": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/AdminBoundary",
+    "layerUrl_ZhuanTi": "http://117.78.43.173:6080/arcgis/rest/services/ZhuanTi",
+    "layuiUrl_sfq_nzwzhpg": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/ClipImage/MapServer",
+    "layerUrl_shifan2mImg": "http://117.78.43.173:6080/arcgis/rest/services/CIITC/shifan2mImg/MapServer"
+}

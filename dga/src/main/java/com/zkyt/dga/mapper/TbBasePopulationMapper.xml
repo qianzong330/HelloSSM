@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkyt.dga.mapper.TbBasePopulationMapper" >
+  <resultMap id="BaseResultMap" type="com.zkyt.dga.pojo.TbBasePopulation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="detailAddress" property="detailaddress" jdbcType="VARCHAR" />
+    <result column="maritaStatus" property="maritastatus" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="professional" property="professional" jdbcType="VARCHAR" />
+    <result column="isSettle" property="issettle" jdbcType="VARCHAR" />
+    <result column="registDate" property="registdate" jdbcType="VARCHAR" />
+    <result column="tempAddress" property="tempaddress" jdbcType="VARCHAR" />
+    <result column="isOverseaPerson" property="isoverseaperson" jdbcType="VARCHAR" />
+    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
+    <result column="entryPort" property="entryport" jdbcType="VARCHAR" />
+    <result column="houseId" property="houseid" jdbcType="INTEGER" />
+    <result column="unitid" property="unitid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, sex, idCard, birthday, nation, detailAddress, maritaStatus, type, professional, 
+    isSettle, registDate, tempAddress, isOverseaPerson, entryDate, entryPort, houseId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zkyt.dga.pojo.TbBasePopulationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_base_population
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_base_population
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_base_population
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zkyt.dga.pojo.TbBasePopulationExample" >
+    delete from tb_base_population
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zkyt.dga.pojo.TbBasePopulation" >
+    insert into tb_base_population (id, name, sex, 
+      idCard, birthday, nation, 
+      detailAddress, maritaStatus, type, 
+      professional, isSettle, registDate, 
+      tempAddress, isOverseaPerson, entryDate, 
+      entryPort, houseId,unitid)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{detailaddress,jdbcType=VARCHAR}, #{maritastatus,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{professional,jdbcType=VARCHAR}, #{issettle,jdbcType=VARCHAR}, #{registdate,jdbcType=VARCHAR}, 
+      #{tempaddress,jdbcType=VARCHAR}, #{isoverseaperson,jdbcType=VARCHAR}, #{entrydate,jdbcType=VARCHAR}, 
+      #{entryport,jdbcType=VARCHAR}, #{houseid}, #{unitid})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zkyt.dga.pojo.TbBasePopulation" >
+    insert into tb_base_population
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="detailaddress != null" >
+        detailAddress,
+      </if>
+      <if test="maritastatus != null" >
+        maritaStatus,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="professional != null" >
+        professional,
+      </if>
+      <if test="issettle != null" >
+        isSettle,
+      </if>
+      <if test="registdate != null" >
+        registDate,
+      </if>
+      <if test="tempaddress != null" >
+        tempAddress,
+      </if>
+      <if test="isoverseaperson != null" >
+        isOverseaPerson,
+      </if>
+      <if test="entrydate != null" >
+        entryDate,
+      </if>
+      <if test="entryport != null" >
+        entryPort,
+      </if>
+      <if test="houseid != null" >
+        houseId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="detailaddress != null" >
+        #{detailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="maritastatus != null" >
+        #{maritastatus,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="issettle != null" >
+        #{issettle,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null" >
+        #{registdate,jdbcType=VARCHAR},
+      </if>
+      <if test="tempaddress != null" >
+        #{tempaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isoverseaperson != null" >
+        #{isoverseaperson,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="entryport != null" >
+        #{entryport,jdbcType=VARCHAR},
+      </if>
+      <if test="houseid != null" >
+        #{houseid},
+      </if>
+      <if test="unitid != null" >
+        #{unitid},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zkyt.dga.pojo.TbBasePopulationExample" resultType="java.lang.Integer" >
+    select count(*) from tb_base_population
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_base_population
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        idCard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailaddress != null" >
+        detailAddress = #{record.detailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maritastatus != null" >
+        maritaStatus = #{record.maritastatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professional != null" >
+        professional = #{record.professional,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issettle != null" >
+        isSettle = #{record.issettle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registdate != null" >
+        registDate = #{record.registdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tempaddress != null" >
+        tempAddress = #{record.tempaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isoverseaperson != null" >
+        isOverseaPerson = #{record.isoverseaperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entrydate != null" >
+        entryDate = #{record.entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entryport != null" >
+        entryPort = #{record.entryport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseid != null" >
+        houseId = #{record.houseid},
+      </if>
+      <if test="record.unitid != null" >
+        houseId = #{record.unitid},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_base_population
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      idCard = #{record.idcard,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      detailAddress = #{record.detailaddress,jdbcType=VARCHAR},
+      maritaStatus = #{record.maritastatus,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      professional = #{record.professional,jdbcType=VARCHAR},
+      isSettle = #{record.issettle,jdbcType=VARCHAR},
+      registDate = #{record.registdate,jdbcType=VARCHAR},
+      tempAddress = #{record.tempaddress,jdbcType=VARCHAR},
+      isOverseaPerson = #{record.isoverseaperson,jdbcType=VARCHAR},
+      entryDate = #{record.entrydate,jdbcType=VARCHAR},
+      entryPort = #{record.entryport,jdbcType=VARCHAR},
+      houseId = #{record.houseid}
+      houseId = #{record.unitid}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkyt.dga.pojo.TbBasePopulation" >
+    update tb_base_population
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="detailaddress != null" >
+        detailAddress = #{detailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="maritastatus != null" >
+        maritaStatus = #{maritastatus,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        professional = #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="issettle != null" >
+        isSettle = #{issettle,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null" >
+        registDate = #{registdate,jdbcType=VARCHAR},
+      </if>
+      <if test="tempaddress != null" >
+        tempAddress = #{tempaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isoverseaperson != null" >
+        isOverseaPerson = #{isoverseaperson,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        entryDate = #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="entryport != null" >
+        entryPort = #{entryport,jdbcType=VARCHAR},
+      </if>
+      <if test="houseid != null">
+        houseId = #{houseid},
+      </if>
+      <if test="unitid != null">
+        unitid = #{unitid},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkyt.dga.pojo.TbBasePopulation" >
+    update tb_base_population
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      detailAddress = #{detailaddress,jdbcType=VARCHAR},
+      maritaStatus = #{maritastatus,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      professional = #{professional,jdbcType=VARCHAR},
+      isSettle = #{issettle,jdbcType=VARCHAR},
+      registDate = #{registdate,jdbcType=VARCHAR},
+      tempAddress = #{tempaddress,jdbcType=VARCHAR},
+      isOverseaPerson = #{isoverseaperson,jdbcType=VARCHAR},
+      entryDate = #{entrydate,jdbcType=VARCHAR},
+      entryPort = #{entryport,jdbcType=VARCHAR},
+      houseId = #{houseid}
+      unitid = #{unitid}
+    where id = #{id}
+  </update>
+  
+  <select id="getTotalCount" parameterType="com.zkyt.dga.pojo.Query" resultType="integer">
+  	select count(*) from tb_base_population 
+  	<where>
+  	
+	  	<if test="unitid != null">
+	  		and unitid=#{unitid}
+	  	</if>
+	  	<if test="houseid != null">
+	  		and houseId=#{houseid}
+	  	</if>
+	  	
+  	</where>
+  	
+  </select>
+  
+  <select id="findPopulationList" parameterType="com.zkyt.dga.pojo.Query" resultMap="BaseResultMap">
+  	select id,name,sex,idCard,birthday,nation,detailAddress,maritaStatus,type,professional,isSettle,registDate,tempAddress,isOverseaPerson,entryDate,entryPort,houseId from tb_base_population
+  	<where>
+	  	<if test="unitid != null">
+	  		and unitid=#{unitid}
+	  	</if>
+	  	<if test="houseid != null">
+	  		and houseId=#{houseid}
+	  	</if>
+  	</where>
+  	<if test="startRow != null">
+  		limit #{startRow},#{pageSize}
+  	</if>
+  </select>
+  <select id="findPopulationAll" parameterType="com.zkyt.dga.pojo.Query" resultMap="BaseResultMap">
+  	select id,name,sex,idCard,birthday,nation,detailAddress,maritaStatus,type,professional,isSettle,registDate,tempAddress,isOverseaPerson,entryDate,entryPort,houseId from tb_base_population
+  	<where>
+	  	<if test="unitid != null">
+	  		and unitid=#{unitid}
+	  	</if>
+	  	<if test="houseid != null">
+	  		and houseId=#{houseid}
+	  	</if>
+  	</where>
+  </select>
+</mapper>

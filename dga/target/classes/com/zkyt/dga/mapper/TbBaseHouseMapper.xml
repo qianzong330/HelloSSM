@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkyt.dga.mapper.TbBaseHouseMapper" >
+  <resultMap id="BaseResultMap" type="com.zkyt.dga.pojo.TbBaseHouse" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="isTownCountry" property="istowncountry" jdbcType="VARCHAR" />
+    <result column="buildPropertie" property="buildpropertie" jdbcType="VARCHAR" />
+    <result column="unitNo" property="unitno" jdbcType="VARCHAR" />
+    <result column="maxFloor" property="maxfloor" jdbcType="VARCHAR" />
+    <result column="unitCount" property="unitcount" jdbcType="VARCHAR" />
+    <result column="floorNo" property="floorno" jdbcType="VARCHAR" />
+    <result column="mallFloorNo" property="mallfloorno" jdbcType="VARCHAR" />
+    <result column="shopPerFloor" property="shopperfloor" jdbcType="VARCHAR" />
+    <result column="mallNo" property="mallno" jdbcType="VARCHAR" />
+    <result column="numOfBaseFloor" property="numofbasefloor" jdbcType="VARCHAR" />
+    <result column="countOfBaseFloor" property="countofbasefloor" jdbcType="VARCHAR" />
+    <result column="monitorCount" property="monitorcount" jdbcType="VARCHAR" />
+    <result column="monitorNature" property="monitornature" jdbcType="VARCHAR" />
+    <result column="isNet" property="isnet" jdbcType="VARCHAR" />
+    <result column="build_id" property="buildId" jdbcType="INTEGER" />
+    <result column="houseno" property="houseno" jdbcType="INTEGER" />
+    <result column="peopleno" property="peopleno" jdbcType="INTEGER" />
+    <result column="area" property="area" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, type, isTownCountry, buildPropertie, unitNo, maxFloor, unitCount, floorNo, 
+    mallFloorNo, shopPerFloor, mallNo, numOfBaseFloor, countOfBaseFloor, monitorCount, 
+    monitorNature, isNet, build_id,houseno,peopleno
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zkyt.dga.pojo.TbBaseHouseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_base_house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_base_house
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_base_house
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zkyt.dga.pojo.TbBaseHouseExample" >
+    delete from tb_base_house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zkyt.dga.pojo.TbBaseHouse" >
+    insert into tb_base_house (id, name, type, 
+      isTownCountry, buildPropertie, unitNo, 
+      maxFloor, unitCount, floorNo, 
+      mallFloorNo, shopPerFloor, mallNo, 
+      numOfBaseFloor, countOfBaseFloor, monitorCount, 
+      monitorNature, isNet, build_id,houseno,peopleno,area
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{istowncountry,jdbcType=VARCHAR}, #{buildpropertie,jdbcType=VARCHAR}, #{unitno,jdbcType=VARCHAR}, 
+      #{maxfloor,jdbcType=VARCHAR}, #{unitcount,jdbcType=VARCHAR}, #{floorno,jdbcType=VARCHAR}, 
+      #{mallfloorno,jdbcType=VARCHAR}, #{shopperfloor,jdbcType=VARCHAR}, #{mallno,jdbcType=VARCHAR}, 
+      #{numofbasefloor,jdbcType=VARCHAR}, #{countofbasefloor,jdbcType=VARCHAR}, #{monitorcount,jdbcType=VARCHAR}, 
+      #{monitornature,jdbcType=VARCHAR}, #{isnet,jdbcType=INTEGER}, #{buildId,jdbcType=INTEGER}, #{houseno,jdbcType=INTEGER}, #{peopleno,jdbcType=INTEGER},#{area}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zkyt.dga.pojo.TbBaseHouse" >
+    insert into tb_base_house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="istowncountry != null" >
+        isTownCountry,
+      </if>
+      <if test="buildpropertie != null" >
+        buildPropertie,
+      </if>
+      <if test="unitno != null" >
+        unitNo,
+      </if>
+      <if test="maxfloor != null" >
+        maxFloor,
+      </if>
+      <if test="unitcount != null" >
+        unitCount,
+      </if>
+      <if test="floorno != null" >
+        floorNo,
+      </if>
+      <if test="mallfloorno != null" >
+        mallFloorNo,
+      </if>
+      <if test="shopperfloor != null" >
+        shopPerFloor,
+      </if>
+      <if test="mallno != null" >
+        mallNo,
+      </if>
+      <if test="numofbasefloor != null" >
+        numOfBaseFloor,
+      </if>
+      <if test="countofbasefloor != null" >
+        countOfBaseFloor,
+      </if>
+      <if test="monitorcount != null" >
+        monitorCount,
+      </if>
+      <if test="monitornature != null" >
+        monitorNature,
+      </if>
+      <if test="isnet != null" >
+        isNet,
+      </if>
+      <if test="buildId != null" >
+        build_id,
+      </if>
+      <if test="houseno != null" >
+        houseno,
+      </if>
+      <if test="peopleno != null" >
+        peopleno,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="istowncountry != null" >
+        #{istowncountry,jdbcType=VARCHAR},
+      </if>
+      <if test="buildpropertie != null" >
+        #{buildpropertie,jdbcType=VARCHAR},
+      </if>
+      <if test="unitno != null" >
+        #{unitno,jdbcType=VARCHAR},
+      </if>
+      <if test="maxfloor != null" >
+        #{maxfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="unitcount != null" >
+        #{unitcount,jdbcType=VARCHAR},
+      </if>
+      <if test="floorno != null" >
+        #{floorno,jdbcType=VARCHAR},
+      </if>
+      <if test="mallfloorno != null" >
+        #{mallfloorno,jdbcType=VARCHAR},
+      </if>
+      <if test="shopperfloor != null" >
+        #{shopperfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="mallno != null" >
+        #{mallno,jdbcType=VARCHAR},
+      </if>
+      <if test="numofbasefloor != null" >
+        #{numofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="countofbasefloor != null" >
+        #{countofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorcount != null" >
+        #{monitorcount,jdbcType=VARCHAR},
+      </if>
+      <if test="monitornature != null" >
+        #{monitornature,jdbcType=VARCHAR},
+      </if>
+      <if test="isnet != null" >
+        #{isnet,jdbcType=VARCHAR},
+      </if>
+      <if test="buildId != null" >
+        #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="houseno != null" >
+        #{houseno,jdbcType=INTEGER},
+      </if>
+      <if test="peopleno != null" >
+        #{peopleno,jdbcType=INTEGER},
+      </if>
+      <if test="area != null" >
+        #{area},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zkyt.dga.pojo.TbBaseHouseExample" resultType="java.lang.Integer" >
+    select count(*) from tb_base_house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_base_house
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istowncountry != null" >
+        isTownCountry = #{record.istowncountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildpropertie != null" >
+        buildPropertie = #{record.buildpropertie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitno != null" >
+        unitNo = #{record.unitno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxfloor != null" >
+        maxFloor = #{record.maxfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitcount != null" >
+        unitCount = #{record.unitcount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floorno != null" >
+        floorNo = #{record.floorno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mallfloorno != null" >
+        mallFloorNo = #{record.mallfloorno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopperfloor != null" >
+        shopPerFloor = #{record.shopperfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mallno != null" >
+        mallNo = #{record.mallno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numofbasefloor != null" >
+        numOfBaseFloor = #{record.numofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countofbasefloor != null" >
+        countOfBaseFloor = #{record.countofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorcount != null" >
+        monitorCount = #{record.monitorcount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitornature != null" >
+        monitorNature = #{record.monitornature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isnet != null" >
+        isNet = #{record.isnet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildId != null" >
+        build_id = #{record.buildId,jdbcType=INTEGER},
+      </if>
+      <if test="record.houseno != null" >
+        houseno = #{record.houseno,jdbcType=INTEGER},
+      </if>
+      <if test="record.people != null" >
+        peopleno = #{record.people,jdbcType=INTEGER},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_base_house
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      isTownCountry = #{record.istowncountry,jdbcType=VARCHAR},
+      buildPropertie = #{record.buildpropertie,jdbcType=VARCHAR},
+      unitNo = #{record.unitno,jdbcType=VARCHAR},
+      maxFloor = #{record.maxfloor,jdbcType=VARCHAR},
+      unitCount = #{record.unitcount,jdbcType=VARCHAR},
+      floorNo = #{record.floorno,jdbcType=VARCHAR},
+      mallFloorNo = #{record.mallfloorno,jdbcType=VARCHAR},
+      shopPerFloor = #{record.shopperfloor,jdbcType=VARCHAR},
+      mallNo = #{record.mallno,jdbcType=VARCHAR},
+      numOfBaseFloor = #{record.numofbasefloor,jdbcType=VARCHAR},
+      countOfBaseFloor = #{record.countofbasefloor,jdbcType=VARCHAR},
+      monitorCount = #{record.monitorcount,jdbcType=VARCHAR},
+      monitorNature = #{record.monitornature,jdbcType=VARCHAR},
+      isNet = #{record.isnet,jdbcType=VARCHAR},
+      build_id = #{record.buildId,jdbcType=INTEGER}
+      houseno = #{record.houseno,jdbcType=INTEGER}
+      people = #{record.people,jdbcType=INTEGER}
+      area = #{record.area}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkyt.dga.pojo.TbBaseHouse" >
+    update tb_base_house
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="istowncountry != null" >
+        isTownCountry = #{istowncountry,jdbcType=VARCHAR},
+      </if>
+      <if test="buildpropertie != null" >
+        buildPropertie = #{buildpropertie,jdbcType=VARCHAR},
+      </if>
+      <if test="unitno != null" >
+        unitNo = #{unitno,jdbcType=VARCHAR},
+      </if>
+      <if test="maxfloor != null" >
+        maxFloor = #{maxfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="unitcount != null" >
+        unitCount = #{unitcount,jdbcType=VARCHAR},
+      </if>
+      <if test="floorno != null" >
+        floorNo = #{floorno,jdbcType=VARCHAR},
+      </if>
+      <if test="mallfloorno != null" >
+        mallFloorNo = #{mallfloorno,jdbcType=VARCHAR},
+      </if>
+      <if test="shopperfloor != null" >
+        shopPerFloor = #{shopperfloor,jdbcType=VARCHAR},
+      </if>
+      <if test="mallno != null" >
+        mallNo = #{mallno,jdbcType=VARCHAR},
+      </if>
+      <if test="numofbasefloor != null" >
+        numOfBaseFloor = #{numofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="countofbasefloor != null" >
+        countOfBaseFloor = #{countofbasefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorcount != null" >
+        monitorCount = #{monitorcount,jdbcType=VARCHAR},
+      </if>
+      <if test="monitornature != null" >
+        monitorNature = #{monitornature,jdbcType=VARCHAR},
+      </if>
+      <if test="isnet != null" >
+        isNet = #{isnet,jdbcType=VARCHAR},
+      </if>
+      <if test="buildId != null" >
+        build_id = #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="houseno != null" >
+        houseno = #{houseno,jdbcType=INTEGER},
+      </if>
+      <if test="peopleno != null" >
+        peopleno = #{peopleno,jdbcType=INTEGER},
+      </if>
+      <if test="area != null" >
+        area = #{area},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkyt.dga.pojo.TbBaseHouse" >
+    update tb_base_house
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      isTownCountry = #{istowncountry,jdbcType=VARCHAR},
+      buildPropertie = #{buildpropertie,jdbcType=VARCHAR},
+      unitNo = #{unitno,jdbcType=VARCHAR},
+      maxFloor = #{maxfloor,jdbcType=VARCHAR},
+      unitCount = #{unitcount,jdbcType=VARCHAR},
+      floorNo = #{floorno,jdbcType=VARCHAR},
+      mallFloorNo = #{mallfloorno,jdbcType=VARCHAR},
+      shopPerFloor = #{shopperfloor,jdbcType=VARCHAR},
+      mallNo = #{mallno,jdbcType=VARCHAR},
+      numOfBaseFloor = #{numofbasefloor,jdbcType=VARCHAR},
+      countOfBaseFloor = #{countofbasefloor,jdbcType=VARCHAR},
+      monitorCount = #{monitorcount,jdbcType=VARCHAR},
+      monitorNature = #{monitornature,jdbcType=VARCHAR},
+      isNet = #{isnet,jdbcType=VARCHAR},
+      build_id = #{buildId,jdbcType=INTEGER}
+      houseno = #{houseno,jdbcType=INTEGER}
+      people = #{people,jdbcType=INTEGER}
+      area = #{area}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getTotalCount" parameterType="com.zkyt.dga.pojo.Query" resultType="integer">
+  	select count(*) from tb_base_house
+  	<if test="buildid != null" >
+  	 where build_id =#{buildid}
+    </if>
+  </select>
+  <select id="findHouseList" parameterType="com.zkyt.dga.pojo.Query" resultMap="BaseResultMap">
+  
+  select id,name,type,isTownCountry,buildPropertie,unitNo,maxFloor,unitCount,floorNo,mallFloorNo,shopPerFloor,mallNo,numOfBaseFloor,countOfBaseFloor,monitorCount,monitorNature,isNet,build_id,houseno,peopleno,area from tb_base_house
+  <if test="buildid != null" >
+   where build_id =#{buildid}
+   </if>
+   <if test="startRow != null" >
+        
+  limit #{startRow},#{pageSize}
+      </if>
+  </select>
+  <select id="findAll" parameterType="com.zkyt.dga.pojo.Query" resultMap="BaseResultMap">
+  
+	  select id,name,type,isTownCountry,buildPropertie,unitNo,maxFloor,unitCount,floorNo,mallFloorNo,shopPerFloor,mallNo,numOfBaseFloor,countOfBaseFloor,monitorCount,monitorNature,isNet,build_id,houseno,peopleno,area from tb_base_house
+	   <!-- <if test="buildid != null" >
+	       where build_id =#{buildid}
+	   </if> -->
+  </select>
+  
+</mapper>
