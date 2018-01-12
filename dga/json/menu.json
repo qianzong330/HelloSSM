@@ -1,0 +1,14 @@
+[
+		{ "id":"11", "pId":"0", "name":"采集录入"},
+		{ "id":"112", "pId":"11", "name":"人员管理",  "page":"population.action"},
+		{ "id":"113", "pId":"11", "name":"建筑管理","page":"building.action"},
+		{ "id":"114", "pId":"11", "name":"房屋管理", "page":"house.action"},
+		{ "id":"115", "pId":"11", "name":"单位管理","page":"unit.action"},
+		{ "id":"12", "pId":"0", "name":"业务管理"},
+		{ "id":"121", "pId":"12", "name":"业务受理" ,"page":"page_qupai_noticebill_add.action"},
+		{ "id":"122", "pId":"12", "name":"工作单快速录入" ,"page":"page_qupai_quickworkorder.action"},
+		{ "id":"124", "pId":"12", "name":"工作单导入" ,"page":"page_qupai_workorderimport.action"},
+		{ "id":"13", "pId":"0", "name":"调度"},
+		{ "id":"131", "pId":"13", "name":"查台转单","page":""},
+		{ "id":"132", "pId":"13", "name":"人工调度","page":"page_qupai_diaodu.action"}
+]
